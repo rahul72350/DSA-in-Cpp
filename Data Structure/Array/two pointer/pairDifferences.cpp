@@ -14,7 +14,6 @@ int main(){
     cout<<"enter target: ";
     cin>>target;
 
-
     while(end < size){
 
         cout<<"value of start: "<<start<<endl;
