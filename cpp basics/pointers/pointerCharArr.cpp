@@ -23,7 +23,7 @@ int main(){
     cout<<&name<<endl;   //it will work same  print values until null character occurs.
     cout<<static_cast<void*>(&name)<<endl;
 
-
+    
 
 
 
