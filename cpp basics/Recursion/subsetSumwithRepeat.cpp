@@ -20,6 +20,8 @@ int subsum(vector<int>arr,int index,int size,int sum){
     subsum(arr,index+1,size,sum) + subsum(arr,index,size,sum-arr[index]);
 }
 
+
+
 int main(){
 
     vector<int>arr ={1,3,5,6};
