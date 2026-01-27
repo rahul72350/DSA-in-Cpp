@@ -22,7 +22,6 @@ void permute(vector<int>&arr,vector<vector<int>>&ans,int index){
 int main(){
 
 
-
     vector<int>arr = {1,2,3};
     vector<vector<int>>ans;
     
