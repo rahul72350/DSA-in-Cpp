@@ -3,7 +3,7 @@
 #include<algorithm>
 using namespace std;
 
-void parentheses(int n, int left, int right,vector<string>&ans, string &temp){
+void parentheses(int n, int left, int right,vector<string>&ans, string &temp){   
     if(left + right == 2*n){
         ans.push_back(temp);
         return;
@@ -31,9 +31,6 @@ int main(){
     for(auto i: ans){
         cout<<i<<endl;
     }
-    
-
-
 
 
 
