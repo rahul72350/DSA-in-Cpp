@@ -70,18 +70,18 @@ class Customer{
 
 int main(){
     
-    // Default constructor
+  
     Customer c1 = Customer();
     
-    // Parameterized constructor
+   
     Customer c2("John Doe", 1234567890, 5000);
     c2.userInfo();
     
-    // Inline constructor
+   
     Customer c3("Jane Smith", 9876543210);
     c3.userInfo();
     
-    // Copy constructor
+  
     Customer c4(c2);
     c4.userInfo();
 
