@@ -15,6 +15,7 @@ class Node{
 };
 
 
+//insertion at starting
 Node* insert_start(vector<int>&arr,int index,int size){
     if(index == size){
         return NULL;
@@ -27,6 +28,7 @@ Node* insert_start(vector<int>&arr,int index,int size){
 
 }
 
+//insertion at last
 Node* insert_last(vector<int>&arr,int index, int size, Node* addr){
     if(index == size){
         return addr;
@@ -40,7 +42,6 @@ Node* insert_last(vector<int>&arr,int index, int size, Node* addr){
 }
 
 //insertion at middle
-
 void insert_mid(int x,int i,Node* temp,int val){
     if(x == i){
         Node* newNode = new Node(val);
@@ -70,8 +71,60 @@ int main(){
 
     //head = insert_start(arr,0,arr.size());
 
-    head = insert_last(arr,0,arr.size(),NULL);
-    insert_mid(2,1,head,55);
+    // head = insert_last(arr,0,arr.size(),NULL);
+    // insert_mid(2,1,head,55);
+
+    // display(head);
+
+    //insertion at start using loop
+
+    // for(int i = 0; i < arr.size(); i++){
+    //     if(head == NULL){
+    //         head = new Node(arr[i]);
+    //     }
+    //     else{
+    //         Node* temp = new Node(arr[i]);
+    //         temp->next = head;
+    //         head = temp;
+    //     }
+    // }
+
+
+
+
+    
+
+
+    //insertion at last using loop
+
+    Node* temp = head;
+    for(int i = 0; i < arr.size(); i++){
+        if(head == NULL){
+            head = new Node(arr[i]);
+            temp = head;
+        }
+        else{
+            Node* newNode = new Node(arr[i]);
+            temp->next = newNode;
+            temp = temp->next;
+        }
+    }
+
+
+    int x = 2;
+    int val = 50;
+    temp = head;
+    int index = 0;
+
+    while(index < x-1){
+        temp = temp->next;
+        index++;
+    }
+
+    Node* newNode = new Node(val);
+
+    newNode->next = temp->next;
+    temp->next = newNode;
 
     display(head);
 
