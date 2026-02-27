@@ -26,7 +26,47 @@ void display(Node* temp){
     display(temp->next);
 }
 
+//delete a first node using function
 
+void deleteFirstNode(Node* &head){
+   if(head == NULL){
+    cout<<"linked list is empty"<<endl;
+    return;
+   }
+   Node* temp = head;
+   head = head->next;
+   delete temp;
+}
+
+
+//delete a last node using recursion
+Node* deleteLastNode(Node* head) {
+
+    if (head == NULL) {
+        return NULL;
+    }
+
+    if (head->next == NULL) {
+        delete head;
+        return NULL;
+    }
+
+    head->next = deleteLastNode(head->next);
+    return head;
+}
+
+
+//delete particular node using recursion
+Node* deleteParticularNode(Node* curr,int x){
+    if(x == 1){
+        Node *temp = curr->next;
+        delete curr;
+        return temp;
+    }
+
+    curr->next = deleteParticularNode(curr->next,x-1);
+    return curr;
+}
 
 
 int main(){
@@ -85,20 +125,21 @@ int main(){
     Node* curr = head;
     Node* prev = NULL;
 
-    if(x == 1){
-        head = head->next;
-        delete curr;
-    }
-    else{
-        while(--x){
-        prev = curr;
-        curr = curr->next;  
-    }
+    // if(x == 1){
+    //     head = head->next;
+    //     delete curr;
+    // }
+    // else{
+    //     while(--x){
+    //     prev = curr;
+    //     curr = curr->next;  
+    // }
 
-    prev->next = curr->next;
-    delete curr;
-    }
+    // prev->next = curr->next;
+    // delete curr;
+    // }
     
+    head = deleteLastNode(head);
     display(head);
     return 0;
 }
