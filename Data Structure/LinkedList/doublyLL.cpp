@@ -112,6 +112,47 @@ Node* doublyLL(Node* prev, vector<int>& arr, int index){
 }
 
 
+//delete starting node
+Node* delete_at_beg(Node* head){
+
+    if(head == NULL){
+        cout<<"no list existed"<<endl;
+        return head;
+    }
+
+    if(head->next == NULL){
+        delete head;
+        return NULL;
+    }
+
+    Node* temp = head;
+    head = head->next;
+    head->prev = NULL;
+    delete temp;
+    return head;
+}
+
+//delete Node at last
+Node* delete_at_end(Node* tail){
+    if(tail == NULL){
+        cout<<"no list existed"<<endl;
+        return NULL;
+    }
+    if(tail->prev == NULL){
+        delete tail;
+        return NULL;
+    }
+
+    Node* temp = tail;
+    tail = tail->prev;
+    tail->next = NULL;
+    delete(temp);
+    return tail;
+}
+
+//delete node at random position
+
+
 //display function
 void display(Node* temp){
     if(temp == NULL){
@@ -137,13 +178,14 @@ int main(){
     //create doubly linked list using vector's value
 
     //this is not optimized approach
-    vector<int>arr = {1,2,3,4,5,6};
+    vector<int>arr = {1,2,3,4,5};
+    
+  
+    for(int i = 0; i < arr.size(); i++){
+        head = insert_at_end(head,arr[i]);
+    }
 
-    // for(int i = 0; i < arr.size(); i++){
-    //     head = insert_at_end(head,arr[i]);
-    // }
-
-    // display(head);
+    display(head);
 
     //this is better approach
     // Node* tail = NULL;
@@ -162,15 +204,86 @@ int main(){
     // }
 
     //using recursion
-    head = doublyLL(NULL,arr,0);
+    // head = doublyLL(NULL,arr,0);
+    // display(head);
+
+    // head = insert_at_middle(6,100,head);
+    // head = insert_at_middle(0,101,head);
+
+    // display(head);
+
+    // head = delete_at_beg(head);
+    // cout<<endl;
+    // display(head);
+
+
+    //delete node at last
+    // Node* tail = head;
+    // if(head != NULL){
+    //     while(tail->next != NULL){
+    //         tail = tail->next;
+    //     }
+    // }
+
+
+    // tail = delete_at_end(tail);
+    // tail = delete_at_end(tail);
+    // cout<<endl;
+
+    // if(tail == NULL){
+    //     head = NULL;
+    // }
+
+    //display(head);
+
+    //delete node at any random position
+
+    int pos = 5;
+
+    if(pos > arr.size()){
+        cout<<"invalid position"<<endl;
+        return 1;
+    }
+    Node* temp = head;
+   
+    //if pos == 1
+    if(pos == 1){
+        if(head -> next == NULL){
+            head = NULL;
+            delete temp;
+        }
+        else{
+        head = head->next;
+        head->prev = NULL;
+        delete temp;
+        } 
+    }
+    else{
+    while(--pos){
+        temp = temp->next;
+    }
+    if(temp->next == NULL){
+        temp->prev->next = NULL;
+        delete temp;
+    }
+    else{
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
+    delete temp;
+    }
+    }
+   
+    cout<<endl;
 
 
     display(head);
 
-    head = insert_at_middle(6,100,head);
-    head = insert_at_middle(0,101,head);
 
-    display(head);
+
+    
+    
+   
+    
 
 
 
