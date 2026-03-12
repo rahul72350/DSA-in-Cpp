@@ -26,7 +26,7 @@ void display(Node* temp){
 }
 
 int main(){
-     vector<int>arr = {1,2,3,4};
+    vector<int>arr = {1,2,3,4};
     Node* head = NULL;
 
     //insertion at last using loop
