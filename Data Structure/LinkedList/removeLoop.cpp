@@ -50,23 +50,46 @@ int main(){
     //this line convert you Linked List into circular linked list
     temp->next = head;
 
-    Node* fast = head;
-    Node* slow = head;
-    
+    if(head == NULL) return 0;
 
-    while(fast && fast->next != NULL){
-        slow = slow->next;
-        fast = fast->next->next;
-        if(slow == fast){
-            cout<<"loop existed"<<endl;
+        Node* slow = head;
+        Node* fast = head;
+
+        // Step 1: Detect loop
+        while(fast && fast->next){
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if(slow == fast){
+                break;
+            }
+        }
+
+        // No loop
+        if(fast == NULL || fast->next == NULL){
             return 0;
         }
-    }
 
-    cout<<"loop doesn't existed"<<endl;
+        // Step 2: Find start of loop
+        slow = head;
+        while(slow != fast){
+            slow = slow->next;
+            fast = fast->next;
+        }
 
+        // Step 3: Find last node of loop
+        temp = fast;
+        while(temp->next != slow){
+            temp = temp->next;
+        }
 
-    delete temp,head;
+        // Step 4: Break loop
+        temp->next = NULL;
+
+    display(head);
+
+    
+
 
     return 0;
 }
