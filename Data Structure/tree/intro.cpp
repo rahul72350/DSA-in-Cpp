@@ -18,6 +18,31 @@ class Node{
     }
 };
 
+int level_traversal(Node* root){
+    queue<Node*>q;
+    q.push(root);
+    int count = 0;
+
+    while(!q.empty()){
+        Node* temp = q.front();
+        cout<<temp->data<<endl;
+        count++;
+
+        if(temp->left != NULL){
+        q.push(temp->left);
+        }
+
+        if(temp->right != NULL){
+        q.push(temp->right);
+        }
+        
+        q.pop();   
+    }
+
+    return count;
+}
+
+
 int main(){
 
     int x;
@@ -49,6 +74,9 @@ int main(){
         }
     
     }
+
+
+    cout<<level_traversal(root);
 
 
     return 0;
