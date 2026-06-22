@@ -1,5 +1,6 @@
 #include<iostream>
 #include<queue>
+#include<algorithm>
 using namespace std;
 
 class Node{
@@ -61,6 +62,22 @@ int countNonLeaf(Node* root){
     }
 
     return (1+countNonLeaf(root->left) + countNonLeaf(root->right));
+}
+
+int size(Node* root, int count){
+    if(root == NULL){
+        return count;
+    }
+
+    return;
+}
+
+int size(Node* root){
+    if(root == NULL){
+        return 0;
+    }
+    
+    return 1 + max(size(root->left),size(root->right));
 }
 
 

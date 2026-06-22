@@ -9,9 +9,9 @@ class Node{
     public:
     Node* left;
     Node* right;
-    int data;
+    string data;
 
-    Node(int val){
+    Node(string val){
         data = val;
         left = NULL;
         right = NULL;
@@ -45,13 +45,13 @@ int level_traversal(Node* root){
 
 int main(){
 
-    int x;
+    string x;
     cin>>x;
     queue<Node*>q;
 
     Node* root = new Node(x);
     q.push(root);
-    int val1, val2;
+    string val1, val2;
 
     while(!q.empty()){
         Node* temp = q.front();
@@ -60,7 +60,7 @@ int main(){
         cout<<"enter value1: ";
         cin>>val1;
 
-        if(val1 != -1){
+        if(val1 != "NULL"){
         temp->left = new Node(val1);
         q.push(temp->left);
         }
@@ -68,7 +68,7 @@ int main(){
         cout<<"enter value2: ";
         cin>>val2;
 
-        if(val2 != -1){
+        if(val2 != "NULL"){
         temp->right = new Node(val2);
         q.push(temp->right);
         }
@@ -77,6 +77,9 @@ int main(){
 
 
     cout<<level_traversal(root);
+
+
+
 
 
     return 0;
