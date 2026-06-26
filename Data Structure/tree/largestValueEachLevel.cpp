@@ -1,6 +1,6 @@
 #include<iostream>
-#include<stack>
 #include<queue>
+#include<vector>
 #include<climits>
 using namespace std;
 
@@ -44,6 +44,10 @@ int main(){
     int maxi = INT_MIN;
 
     Node* root = tree();
+    if(root == NULL){
+        return 0;
+    }
+
     q.push(root);
     
     while (!q.empty()){
